@@ -1,0 +1,171 @@
+version=4
+opts=\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-deep-equal-$1.tar.gz/ \
+ https://github.com/substack/node-deep-equal/tags .*/archive/.*/v?([\d\.]+).tar.gz group
+
+opts=\
+component=available-typed-arrays,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-available-typed-arrays-$1.tar.gz/ \
+ https://github.com/inspect-js/available-typed-arrays/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=call-bind,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-call-bind-$1.tar.gz/ \
+ https://github.com/ljharb/call-bind/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=es-get-iterator,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-es-get-iterator-$1.tar.gz/ \
+ https://github.com/ljharb/es-get-iterator/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=foreach,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-foreach-$1.tar.gz/ \
+ https://github.com/manuelstofer/foreach/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=get-intrinsic,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-get-intrinsic-$1.tar.gz/ \
+ https://github.com/ljharb/get-intrinsic/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=has-bigints,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-has-bigints-$1.tar.gz/ \
+ https://github.com/ljharb/has-bigints/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+# It is not recommended use npmregistry. Please investigate more.
+# Take a look at https://wiki.debian.org/debian/watch/
+opts="searchmode=plain,component=has-tostringtag,ctype=nodejs,pgpmode=none" \
+ https://registry.npmjs.org/has-tostringtag https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-([\d\.]+)@ARCHIVE_EXT@ checksum
+
+opts=\
+component=is-arguments,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-arguments-$1.tar.gz/ \
+ https://github.com/inspect-js/is-arguments/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-bigint,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-bigint-$1.tar.gz/ \
+ https://github.com/inspect-js/is-bigint/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-boolean-object,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-boolean-object-$1.tar.gz/ \
+ https://github.com/inspect-js/is-boolean-object/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-map,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-map-$1.tar.gz/ \
+ https://github.com/inspect-js/is-map/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-number-object,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-number-object-$1.tar.gz/ \
+ https://github.com/inspect-js/is-number-object/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-regex,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-regex-$1.tar.gz/ \
+ https://github.com/inspect-js/is-regex/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-set,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-set-$1.tar.gz/ \
+ https://github.com/inspect-js/is-set/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-string,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-string-$1.tar.gz/ \
+ https://github.com/ljharb/is-string/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-typed-array,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-typed-array-$1.tar.gz/ \
+ https://github.com/inspect-js/is-typed-array/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-weakmap,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-weakmap-$1.tar.gz/ \
+ https://github.com/inspect-js/is-weakmap/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-weakset,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-is-weakset-$1.tar.gz/ \
+ https://github.com/inspect-js/is-weakset/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=objectassign,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-object.assign-$1.tar.gz/ \
+ https://github.com/ljharb/object.assign/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=regexpprototypeflags,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-RegExp.prototype.flags-$1.tar.gz/ \
+ https://github.com/es-shims/RegExp.prototype.flags/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=side-channel,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-side-channel-$1.tar.gz/ \
+ https://github.com/ljharb/side-channel/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=which-boxed-primitive,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-which-boxed-primitive-$1.tar.gz/ \
+ https://github.com/inspect-js/which-boxed-primitive/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=which-collection,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-which-collection-$1.tar.gz/ \
+ https://github.com/inspect-js/which-collection/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=which-typed-array,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-which-typed-array-$1.tar.gz/ \
+ https://github.com/inspect-js/which-typed-array/tags .*/archive.*/v?([\d\.]+).tar.gz checksum

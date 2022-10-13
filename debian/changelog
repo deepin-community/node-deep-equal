@@ -1,0 +1,61 @@
+node-deep-equal (2.0.5+~cs32.11.68-2) unstable; urgency=medium
+
+  * Team upload
+  * Back to unstable after successful tests
+
+ -- Yadd <yadd@debian.org>  Wed, 18 Aug 2021 16:16:49 +0200
+
+node-deep-equal (2.0.5+~cs32.11.68-1) experimental; urgency=medium
+
+  [ Yadd ]
+  * Team upload
+  * Bump debhelper compatibility level to 13
+  * Declare compliance with policy 4.5.1
+  * Modernize debian/watch
+  * Use dh-sequence-nodejs
+  * Embed available-typed-arrays, call-bind, es-get-iterator, foreach,
+    get-intrinsic, has-bigints, has-tostringtag, is-arguments, is-bigint,
+    is-boolean-object, is-map, is-number-object, is-regex, is-set, is-string,
+    is-typed-array, is-weakmap, is-weakset, object.assign,
+    RegExp.prototype.flags, side-channel, which-boxed-primitive,
+    which-collection, which-typed-array
+  * Fix GitHub tags regex
+  * New upstream version 2.0.5+~cs32.11.68
+  * Add dependencies to: node-debbundle-es-to-primitive,
+    node-define-properties, node-es-abstract, node-function-bind,
+    node-isarray, node-object-inspect, node-resolve
+  * Update copyright
+  * Embed array.prototype.some, has-typed-arrays,
+    object.getownpropertydescriptors for test only
+  * Apply multi-arch hints (foreign)
+
+ -- Yadd <yadd@debian.org>  Mon, 16 Aug 2021 21:27:27 +0200
+
+node-deep-equal (1.0.1-2) unstable; urgency=medium
+
+  * Team upload
+
+  [ Debian Janitor ]
+  * Trim trailing whitespace.
+  * Use secure copyright file specification URI.
+  * Bump debhelper from old 9 to 12.
+  * Set debhelper-compat version in Build-Depends.
+  * Update Vcs-* headers to use salsa repository.
+  * Remove obsolete field Name from debian/upstream/metadata (already
+    present in machine-readable debian/copyright).
+
+  [ Xavier Guimard ]
+  * Declare compliance with policy 4.5.0
+  * Add "Rules-Requires-Root: no"
+  * Change section to javascript
+  * Use pkg-js-tools auto install
+  * Fix copyright
+  * Enable upstream test using tape
+
+ -- Xavier Guimard <yadd@debian.org>  Wed, 13 May 2020 16:40:28 +0200
+
+node-deep-equal (1.0.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #802518)
+
+ -- Ross Gammon <rossgammon@mail.dk>  Tue, 20 Oct 2015 21:29:52 +0200
