@@ -5,16 +5,7 @@ Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.deb
 Uploaders: Ross Gammon <rossgammon@mail.dk>
 Build-Depends: debhelper-compat (= 13)
  , dh-sequence-nodejs
- , node-debbundle-es-to-primitive <!nocheck>
- , node-define-properties <!nocheck>
- , node-es-abstract <!nocheck>
- , node-function-bind <!nocheck>
- , node-isarray <!nocheck>
- , node-object-inspect <!nocheck>
- , node-resolve <!nocheck>
- , node-semver <!nocheck>
- , node-tape <!nocheck>
-Standards-Version: 4.5.1
+Standards-Version: 4.6.1
 Vcs-Browser: https://salsa.debian.org/js-team/node-deep-equal
 Vcs-Git: https://salsa.debian.org/js-team/node-deep-equal.git
 Homepage: https://github.com/substack/node-deep-equal
@@ -28,6 +19,7 @@ Depends: ${misc:Depends}
  , node-debbundle-es-to-primitive
  , node-define-properties
  , node-es-abstract
+ , node-for-each
  , node-function-bind
  , node-isarray
  , node-object-inspect

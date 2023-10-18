@@ -1,3 +1,39 @@
+node-deep-equal (2.1.0+~cs31.12.80-1) unstable; urgency=medium
+
+  * Team upload
+  * drop component foreach
+  * Refresh patches
+  * Add component gopd
+  * New upstream version 2.1.0+~cs31.12.80
+  * Update copyright
+
+ -- Yadd <yadd@debian.org>  Sun, 04 Dec 2022 18:35:53 +0100
+
+node-deep-equal (2.0.5+~cs32.12.77-2) unstable; urgency=medium
+
+  * Team upload
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository-Browse
+  * Drop __proto__ calls in test (fixes autopkgtest)
+
+ -- Yadd <yadd@debian.org>  Fri, 02 Dec 2022 12:26:31 +0100
+
+node-deep-equal (2.0.5+~cs32.12.77-1) unstable; urgency=medium
+
+  * Team upload
+  * Declare compliance with policy 4.6.1
+  * New upstream version 2.0.5+~cs32.12.77
+
+ -- Yadd <yadd@debian.org>  Fri, 13 May 2022 09:15:19 +0200
+
+node-deep-equal (2.0.5+~cs32.11.68-3) unstable; urgency=medium
+
+  * Team upload
+  * Move test to autopkgtest only (Closes: #1007210)
+  * Update standards version to 4.6.0, no changes needed.
+  * Fix filenamemangle
+
+ -- Yadd <yadd@debian.org>  Sun, 13 Mar 2022 18:44:16 +0100
+
 node-deep-equal (2.0.5+~cs32.11.68-2) unstable; urgency=medium
 
   * Team upload
