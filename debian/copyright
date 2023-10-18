@@ -5,7 +5,6 @@ Source: https://github.com/substack/node-deep-equal#readme
  https://github.com/inspect-js/available-typed-arrays/tags
  https://github.com/ljharb/call-bind/tags
  https://github.com/ljharb/es-get-iterator/tags
- https://github.com/manuelstofer/foreach/tags
  https://github.com/ljharb/get-intrinsic/tags
  https://github.com/ljharb/has-bigints/tags
  https://registry.npmjs.org/has-tostringtag
@@ -26,6 +25,7 @@ Source: https://github.com/substack/node-deep-equal#readme
  https://github.com/inspect-js/which-boxed-primitive/tags
  https://github.com/inspect-js/which-collection/tags
  https://github.com/inspect-js/which-typed-array/tags
+ https://github.com/ljharb/gopd/tags
 
 Files: *
 Copyright: 2012-2014 James Halliday <mail@substack.net>
@@ -45,6 +45,7 @@ License: Expat
 Files: call-bind/*
  es-get-iterator/*
  get-intrinsic/*
+ gopb/*
  has-bigints/*
  is-arguments/*
  is-bigint/*
@@ -58,16 +59,12 @@ Files: call-bind/*
  side-channel/*
  which-boxed-primitive/*
  which-typed-array/*
-Copyright: 2014-2020 Jordan Harband
-License: Expat
-
-Files: foreach/*
-Copyright: 2013 Manuel Stofer
+Copyright: 2014-2022 Jordan Harband
 License: Expat
 
 Files: debian/*
 Copyright: 2015 Ross Gammon <rossgammon@mail.dk>
- 2020-2021 Yadd <yadd@debian.org>
+ 2020-2022 Yadd <yadd@debian.org>
 License: Expat
 
 Files: debian/tests/test_modules/array.prototype.some/*
