@@ -1,0 +1,158 @@
+From: =?utf-8?q?Bastien_Roucari=C3=A8s?= <rouca@debian.org>
+Date: Sat, 11 Nov 2023 23:40:22 +0000
+Subject: Do not depend on small package for testing GetIntrinsic
+
+forwarded: not-needed
+---
+ get-intrinsic/test/GetIntrinsic.js | 44 +++++++++++++++++++++-----------------
+ 1 file changed, 24 insertions(+), 20 deletions(-)
+
+diff --git a/get-intrinsic/test/GetIntrinsic.js b/get-intrinsic/test/GetIntrinsic.js
+index 1cc08e0..aae7169 100644
+--- a/get-intrinsic/test/GetIntrinsic.js
++++ b/get-intrinsic/test/GetIntrinsic.js
+@@ -3,15 +3,15 @@
+ var GetIntrinsic = require('../');
+ 
+ var test = require('tape');
+-var forEach = require('for-each');
++//var forEach = require('for-each');
+ var debug = require('object-inspect');
+-var generatorFns = require('make-generator-function')();
+-var asyncFns = require('make-async-function').list();
+-var asyncGenFns = require('make-async-generator-function')();
+-var mockProperty = require('mock-property');
++//var generatorFns = require('make-generator-function')();
++//var asyncFns = require('make-async-function').list();
++//var asyncGenFns = require('make-async-generator-function')();
++//var mockProperty = require('mock-property');
+ 
+ var callBound = require('call-bind/callBound');
+-var v = require('es-value-fixtures');
++//var v = require('es-value-fixtures');
+ var $gOPD = require('gopd');
+ var DefinePropertyOrThrow = require('es-abstract/2021/DefinePropertyOrThrow');
+ 
+@@ -78,8 +78,8 @@ test('throws', function (t) {
+ 		SyntaxError,
+ 		'Throws with extra percent signs, even on an existing intrinsic'
+ 	);
+-
+-	forEach(v.nonStrings, function (nonString) {
++/*
++	v.nonStrings.foreach( function (nonString) {
+ 		t['throws'](
+ 			function () { GetIntrinsic(nonString); },
+ 			TypeError,
+@@ -87,7 +87,7 @@ test('throws', function (t) {
+ 		);
+ 	});
+ 
+-	forEach(v.nonBooleans, function (nonBoolean) {
++	v.nonBooleans.foreach( function (nonBoolean) {
+ 		t['throws'](
+ 			function () { GetIntrinsic('%', nonBoolean); },
+ 			TypeError,
+@@ -95,18 +95,18 @@ test('throws', function (t) {
+ 		);
+ 	});
+ 
+-	forEach([
++	[
+ 		'toString',
+ 		'propertyIsEnumerable',
+ 		'hasOwnProperty'
+-	], function (objectProtoMember) {
++	].foreach( function (objectProtoMember) {
+ 		t['throws'](
+ 			function () { GetIntrinsic(objectProtoMember); },
+ 			SyntaxError,
+ 			debug(objectProtoMember) + ' is not an intrinsic'
+ 		);
+ 	});
+-
++*/
+ 	t.end();
+ });
+ 
+@@ -124,7 +124,7 @@ test('dotted paths', function (t) {
+ 	t.equal(GetIntrinsic('Object.prototype.toString'), Object.prototype.toString, 'Object.prototype.toString yields Object.prototype.toString');
+ 	t.equal(GetIntrinsic('%Array.prototype.push%'), Array.prototype.push, '%Array.prototype.push% yields Array.prototype.push');
+ 	t.equal(GetIntrinsic('Array.prototype.push'), Array.prototype.push, 'Array.prototype.push yields Array.prototype.push');
+-
++/*
+ 	test('underscore paths are aliases for dotted paths', { skip: !Object.isFrozen || Object.isFrozen(Object.prototype) }, function (st) {
+ 		var original = GetIntrinsic('%ObjProto_toString%');
+ 
+@@ -147,7 +147,8 @@ test('dotted paths', function (t) {
+ 		DefinePropertyOrThrow(Object.prototype, 'toString', { '[[Value]]': original });
+ 		st.end();
+ 	});
+-
++*/
++/*
+ 	test('dotted paths cache', { skip: !Object.isFrozen || Object.isFrozen(Object.prototype) }, function (st) {
+ 		var original = GetIntrinsic('%Object.prototype.propertyIsEnumerable%');
+ 
+@@ -169,7 +170,7 @@ test('dotted paths', function (t) {
+ 
+ 		st.end();
+ 	});
+-
++*/
+ 	test('dotted path reports correct error', function (st) {
+ 		st['throws'](function () {
+ 			GetIntrinsic('%NonExistentIntrinsic.prototype.property%');
+@@ -194,7 +195,7 @@ test('accessors', { skip: !$gOPD || typeof Map !== 'function' }, function (t) {
+ 
+ 	t.end();
+ });
+-
++/*
+ test('generator functions', { skip: !generatorFns.length }, function (t) {
+ 	var $GeneratorFunction = GetIntrinsic('%GeneratorFunction%');
+ 	var $GeneratorFunctionPrototype = GetIntrinsic('%Generator%');
+@@ -211,7 +212,8 @@ test('generator functions', { skip: !generatorFns.length }, function (t) {
+ 
+ 	t.end();
+ });
+-
++*/
++/*
+ test('async functions', { skip: !asyncFns.length }, function (t) {
+ 	var $AsyncFunction = GetIntrinsic('%AsyncFunction%');
+ 	var $AsyncFunctionPrototype = GetIntrinsic('%AsyncFunctionPrototype%');
+@@ -226,7 +228,8 @@ test('async functions', { skip: !asyncFns.length }, function (t) {
+ 
+ 	t.end();
+ });
+-
++*/
++/*
+ test('async generator functions', { skip: asyncGenFns.length === 0 }, function (t) {
+ 	var $AsyncGeneratorFunction = GetIntrinsic('%AsyncGeneratorFunction%');
+ 	var $AsyncGeneratorFunctionPrototype = GetIntrinsic('%AsyncGenerator%');
+@@ -243,7 +246,7 @@ test('async generator functions', { skip: asyncGenFns.length === 0 }, function (
+ 
+ 	t.end();
+ });
+-
++*/
+ test('%ThrowTypeError%', function (t) {
+ 	var $ThrowTypeError = GetIntrinsic('%ThrowTypeError%');
+ 
+@@ -256,7 +259,7 @@ test('%ThrowTypeError%', function (t) {
+ 
+ 	t.end();
+ });
+-
++/*
+ test('allowMissing', { skip: asyncGenFns.length > 0 }, function (t) {
+ 	t['throws'](
+ 		function () { GetIntrinsic('%AsyncGeneratorPrototype%'); },
+@@ -272,3 +275,4 @@ test('allowMissing', { skip: asyncGenFns.length > 0 }, function (t) {
+ 
+ 	t.end();
+ });
++*/
+\ No newline at end of file

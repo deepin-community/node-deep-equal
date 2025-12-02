@@ -1,1 +1,13 @@
 drop-__proto__-calls.patch
+0002-Fix-test-for-available-typed-arrays.patch
+0003-Remove-not-needed-package-on-modern-node-for-testing.patch
+0004-Do-not-depend-on-small-package-for-testing-GetIntrin.patch
+0005-Do-not-depends-on-small-packages-for-testing-functio.patch
+0006-Remove-small-package-for-test-of-call-bind.patch
+0007-Use-for-each-instead-of-foreach.patch
+0008-Fix-test-for-is-typed-array.patch
+0009-Avoid-small-package-for-test.patch
+0010-Remove-need-of-small-package-for-test.patch
+0011-Do-not-need-mock-package-in-objectassign-tests.patch
+0012-Do-not-test-with-has-typed-array.patch
+0013-Remove-test-that-fail-with-modern-node.patch

@@ -169,3 +169,59 @@ ctype=nodejs,\
 dversionmangle=auto,\
 filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-which-typed-array-$1/ \
  https://github.com/inspect-js/which-typed-array/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=set-function-length,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-set-function-length-$1/ \
+ https://github.com/ljharb/set-function-length/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=has-proto,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-has-proto-$1/ \
+ https://github.com/inspect-js/has-proto/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=hasown,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-hasOwn-$1/ \
+ https://github.com/inspect-js/hasOwn/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=stop-iteration-iterator,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-stop-iteration-iterator-$1/ \
+ https://github.com/ljharb/stop-iteration-iterator/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=set-function-name,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-set-function-name-$1/ \
+ https://github.com/ljharb/set-function-name/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-array-buffer,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-is-array-buffer-$1/ \
+ https://github.com/inspect-js/is-array-buffer/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=is-shared-array-buffer,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-is-shared-array-buffer-$1/ \
+ https://github.com/inspect-js/is-shared-array-buffer/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
+
+opts=\
+component=array-buffer-byte-length,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-array-buffer-byte-length-$1/ \
+ https://github.com/inspect-js/array-buffer-byte-length/tags .*/archive.*/v?([\d\.]+).tar.gz checksum

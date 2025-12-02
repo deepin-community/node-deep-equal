@@ -1,0 +1,42 @@
+From: =?utf-8?q?Bastien_Roucari=C3=A8s?= <rouca@debian.org>
+Date: Sun, 12 Nov 2023 00:24:47 +0000
+Subject: Fix test for is-typed-array
+
+Forwarded: not-needed
+---
+ is-typed-array/test/index.js | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/is-typed-array/test/index.js b/is-typed-array/test/index.js
+index 8e7a16b..c16bdd1 100644
+--- a/is-typed-array/test/index.js
++++ b/is-typed-array/test/index.js
+@@ -4,8 +4,8 @@ var test = require('tape');
+ var isTypedArray = require('../');
+ var isCallable = require('is-callable');
+ var hasToStringTag = require('has-tostringtag/shams')();
+-var generators = require('make-generator-function')();
+-var arrowFn = require('make-arrow-function')();
++//var generators = require('make-generator-function')();
++//var arrowFn = require('make-arrow-function')();
+ var forEach = require('for-each');
+ var inspect = require('object-inspect');
+ 
+@@ -58,7 +58,7 @@ test('Functions', function (t) {
+ 	t.notOk(isTypedArray(function () {}), 'function is not typed array');
+ 	t.end();
+ });
+-
++/*
+ test('Generators', { skip: generators.length === 0 }, function (t) {
+ 	forEach(generators, function (genFn) {
+ 		t.notOk(isTypedArray(genFn), 'generator function ' + inspect(genFn) + ' is not typed array');
+@@ -70,7 +70,7 @@ test('Arrow functions', { skip: !arrowFn }, function (t) {
+ 	t.notOk(isTypedArray(arrowFn), 'arrow function is not typed array');
+ 	t.end();
+ });
+-
++*/
+ test('@@toStringTag', { skip: !hasToStringTag }, function (t) {
+ 	forEach(typedArrayNames, function (typedArray) {
+ 		if (typeof global[typedArray] === 'function') {

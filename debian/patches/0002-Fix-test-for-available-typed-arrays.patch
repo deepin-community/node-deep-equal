@@ -1,0 +1,52 @@
+From: =?utf-8?q?Bastien_Roucari=C3=A8s?= <rouca@debian.org>
+Date: Sat, 11 Nov 2023 22:45:02 +0000
+Subject: Fix test for available-typed-arrays
+
+Do not depends on small old package
+
+Forwarded: not-needed
+---
+ available-typed-arrays/package.json  | 2 --
+ available-typed-arrays/test/index.js | 5 ++---
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/available-typed-arrays/package.json b/available-typed-arrays/package.json
+index 1787d42..0811ea9 100644
+--- a/available-typed-arrays/package.json
++++ b/available-typed-arrays/package.json
+@@ -61,12 +61,10 @@
+ 	},
+ 	"devDependencies": {
+ 		"@ljharb/eslint-config": "^18.0.0",
+-		"array.prototype.every": "^1.1.2",
+ 		"aud": "^1.1.5",
+ 		"auto-changelog": "^2.3.0",
+ 		"eslint": "^7.32.0",
+ 		"evalmd": "^0.0.19",
+-		"isarray": "^2.0.5",
+ 		"nyc": "^10.3.2",
+ 		"safe-publish-latest": "^1.1.4",
+ 		"tape": "^5.3.1"
+diff --git a/available-typed-arrays/test/index.js b/available-typed-arrays/test/index.js
+index 21c986d..13cff2c 100644
+--- a/available-typed-arrays/test/index.js
++++ b/available-typed-arrays/test/index.js
+@@ -1,8 +1,7 @@
+ 'use strict';
+ 
+ var test = require('tape');
+-var isArray = require('isarray');
+-var every = require('array.prototype.every');
++var isArray = Array.isArray;
+ 
+ var availableTypedArrays = require('../');
+ 
+@@ -12,7 +11,7 @@ test('available typed arrays', function (t) {
+ 	var arrays = availableTypedArrays();
+ 	t.equal(isArray(arrays), true, 'returns an array');
+ 
+-	t.equal(every(arrays, function (array) { return typeof array === 'string'; }), true, 'contains only strings');
++	t.equal(arrays.every(function (array) { return typeof array === 'string'; }), true, 'contains only strings');
+ 
+ 	t.end();
+ });

@@ -26,45 +26,166 @@ Source: https://github.com/substack/node-deep-equal#readme
  https://github.com/inspect-js/which-collection/tags
  https://github.com/inspect-js/which-typed-array/tags
  https://github.com/ljharb/gopd/tags
+ https://github.com/ljharb/set-function-length/tags
+ https://github.com/inspect-js/has-proto/tags
+ https://github.com/inspect-js/has-symbols/tags
+ https://github.com/inspect-js/hasOwn/tags
+ https://github.com/ljharb/stop-iteration-iterator/tags
+ https://github.com/ljharb/set-function-name/tags
+ https://github.com/inspect-js/is-array-buffer/tags
+ https://github.com/inspect-js/is-shared-array-buffer/tags
+ https://github.com/inspect-js/array-buffer-byte-length/tags
 
 Files: *
 Copyright: 2012-2014 James Halliday <mail@substack.net>
  2009 Thomas Robinson <280north.com>
 License: Expat
 
+Files: array-buffer-byte-length/*
+Copyright: 2023 Jordan Harband <ljharb@gmail.com>
+ 2023 Inspect JS
+License: Expat
+
 Files: available-typed-arrays/*
- has-tostringtag/*
- is-map/*
- is-set/*
- is-weakmap/*
- is-weakset/*
- which-collection/*
-Copyright: 2019-2020 Inspect JS
+Copyright: 2023 Jordan Harband <ljharb@gmail.com>
+ 2023 Inspect JS
 License: Expat
 
 Files: call-bind/*
- es-get-iterator/*
- get-intrinsic/*
- gopb/*
- has-bigints/*
- is-arguments/*
- is-bigint/*
- is-boolean-object/*
- is-number-object/*
- is-regex/*
- is-string/*
- is-typed-array/*
- objectassign/*
- regexpprototypeflags/*
- side-channel/*
- which-boxed-primitive/*
- which-typed-array/*
-Copyright: 2014-2022 Jordan Harband
+Copyright: 2020 Jordan Harband <ljharb@gmail.com>
+ 2023 Inspect JS
+License: Expat
+
+Files: es-get-iterator/*
+Copyright: 2020 Jordan Harband <ljharb@gmail.com>
+ 2023 Inspect JS
+License: Expat
+
+Files: get-intrinsic/*
+Copyright: 2020-2023 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: gopd/*
+Copyright: 2020-2023 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: has-bigints/*
+Copyright: 2019-2022 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: has-proto/*
+Copyright: 2022 Jordan Harband <ljharb@gmail.com>
+ 2022 Inspect JS
+License: Expat
+
+Files: has-tostringtag/*
+Copyright: 2021 Jordan Harband <ljharb@gmail.com>
+ 2021 Inspect JS
+License: Expat
+
+Files: hasown/*
+Copyright: 2023 Jordan Harband and contributors
+License: Expat
+
+Files: is-arguments/*
+Copyright: 2014-2023 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: is-array-buffer/*
+Copyright: 2018-2021 Jordan Harband <ljharb@gmail.com>
+ 2015 Chen Gengyuan, Inspect JS
+License: Expat
+
+Files: is-bigint/*
+Copyright: 2018-2021 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: is-boolean-object/*
+Copyright: 2015-2021 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: is-map/*
+Copyright: 2015-2020 Inspect JS
+ 2015-2021 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: is-number-object/*
+Copyright: 2015-2022 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: is-regex/*
+Copyright: 2014-2021 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: is-set/*
+Copyright: 2019-2020 Jordan Harband <ljharb@gmail.com>
+ 2019-2020 Inspect JS
+License: Expat
+
+Files: is-shared-array-buffer/*
+Copyright: 2021-2022 Jordan Harband <ljharb@gmail.com>
+ 2021 Inspect JS
+License: Expat
+
+Files: is-string/*
+Copyright: 2015-2021 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: is-typed-array/*
+Copyright: 2015-2023 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: is-weakmap/*
+Copyright: 2019 Jordan Harband <ljharb@gmail.com>
+ 2019 Inspect JS
+License: Expat
+
+Files: is-weakset/*
+Copyright: 2019-2021 Jordan Harband <ljharb@gmail.com>
+ 2019 Inspect JS
+License: Expat
+
+Files: objectassign/*
+Copyright: 2014-2022 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: regexpprototypeflags/*
+Copyright: 2014-2023 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: set-function-length/*
+Copyright: 2023 Jordan Harband and contributors <ljharb@gmail.com>
+License: Expat
+
+Files: set-function-name/*
+Copyright: 2017-2023 Jordan Harband and contributors <ljharb@gmail.com>
+License: Expat
+
+Files: side-channel/*
+Copyright: 2019-2020 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: stop-iteration-iterator/*
+Copyright: 2023 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: which-boxed-primitive/*
+Copyright: 2019-2023 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: which-collection/*
+Copyright: 2019-2020 Inspect JS
+ 2019-2020 Jordan Harband <ljharb@gmail.com>
+License: Expat
+
+Files: which-typed-array/*
+Copyright: 2015-2023 Jordan Harband
 License: Expat
 
 Files: debian/*
 Copyright: 2015 Ross Gammon <rossgammon@mail.dk>
  2020-2022 Yadd <yadd@debian.org>
+ 2023 Bastien Roucaries <rouca@debian.org>
 License: Expat
 
 Files: debian/tests/test_modules/array.prototype.some/*
