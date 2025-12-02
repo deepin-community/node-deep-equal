@@ -1,0 +1,182 @@
+From: =?utf-8?q?Bastien_Roucari=C3=A8s?= <rouca@debian.org>
+Date: Sun, 12 Nov 2023 20:57:13 +0000
+Subject: Do not test with has-typed-array
+
+forwarded: not-needed
+---
+ test/cmp.js | 48 ++++++++++++++++++++++++------------------------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/test/cmp.js b/test/cmp.js
+index ab55e7d..8bbb0d9 100644
+--- a/test/cmp.js
++++ b/test/cmp.js
+@@ -3,9 +3,9 @@
+ var test = require('tape');
+ require('./_tape');
+ var assign = require('object.assign');
+-var gOPDs = require('object.getownpropertydescriptors');
++var gOPDs = require('gopd');
+ var hasSymbols = require('has-symbols')();
+-var hasTypedArrays = require('has-typed-arrays')();
++//var hasTypedArrays = require('has-typed-arrays')();
+ var semver = require('semver');
+ var keys = require('object-keys');
+ var availableTypedArrays = require('available-typed-arrays')();
+@@ -26,9 +26,6 @@ function tag(obj, value) {
+   return obj;
+ }
+ 
+-// eslint-disable-next-line no-proto
+-var hasDunderProto = Object.getPrototypeOf([]) === Array.prototype;
+-
+ test('equal', function (t) {
+   t.deepEqualTest(
+     { a: [2, 3], b: [4] },
+@@ -301,7 +298,7 @@ test('Set and Map', { skip: !Object.defineProperty || typeof Set !== 'function'
+ 
+   var maplikeSet = new Set();
+   Object.defineProperty(maplikeSet, 'constructor', { enumerable: false, value: Map });
+-  Object.setPrototypeOf(maplikeSet, Map.prototype);
++  maplikeSet.__proto__ = Map.prototype; // eslint-disable-line no-proto
+   t.deepEqualTest(
+     maplikeSet,
+     new Map(),
+@@ -442,7 +439,7 @@ test('Dates', function (t) {
+   t.test('fake Date', { skip: !hasProto }, function (st) {
+     var a = new Date(2000);
+     var b = tag(Object.create(
+-      Object.getPrototypeOf(a),
++      a.__proto__, // eslint-disable-line no-proto
+       gOPDs(a)
+     ), 'Date');
+ 
+@@ -522,15 +519,15 @@ test('buffers', { skip: typeof Buffer !== 'function' }, function (t) {
+     false,
+     false
+   );
+-
++/*
+   t.test('bufferlikes', { skip: !Object.defineProperty || !hasTypedArrays }, function (st) {
+     var fakeBuffer = {
+       0: 'a',
+       length: 1,
++      __proto__: emptyBuffer.__proto__, // eslint-disable-line no-proto
+       copy: emptyBuffer.copy,
+       slice: emptyBuffer.slice
+     };
+-    Object.setPrototypeOf(fakeBuffer, Object.getPrototypeOf(emptyBuffer));
+     Object.defineProperty(fakeBuffer, '0', { enumerable: false });
+     Object.defineProperty(fakeBuffer, 'length', { enumerable: false });
+     Object.defineProperty(fakeBuffer, 'copy', { enumerable: false });
+@@ -554,7 +551,7 @@ test('buffers', { skip: typeof Buffer !== 'function' }, function (t) {
+         enumerable: false,
+         value: emptyBuffer.copy
+       });
+-      Object.setPrototypeOf(bufferlike, Object.getPrototypeOf(emptyBuffer));
++      bufferlike.__proto__ = emptyBuffer.__proto__; // eslint-disable-line no-proto
+ 
+       s2t.deepEqualTest(
+         emptyBuffer,
+@@ -568,7 +565,7 @@ test('buffers', { skip: typeof Buffer !== 'function' }, function (t) {
+ 
+     st.end();
+   });
+-
++*/
+   t.end();
+ });
+ 
+@@ -843,7 +840,7 @@ test('regexen', function (t) {
+   t.test('fake RegExp', { skip: !hasProto }, function (st) {
+     var a = /abc/g;
+     var b = tag(Object.create(
+-      Object.getPrototypeOf(a),
++      a.__proto__, // eslint-disable-line no-proto
+       gOPDs(a)
+     ), 'RegExp');
+ 
+@@ -945,11 +942,12 @@ test('Errors', function (t) {
+     false
+   );
+ 
+-  t.test('fake error', { skip: !process.env.ASSERT || !hasDunderProto }, function (st) {
+-    var a = tag({}, 'Error');
+-    Object.setPrototypeOf(a, null);
++  t.test('fake error', { skip: !process.env.ASSERT || !hasProto }, function (st) {
++    var a = tag({
++      __proto__: null
++    }, 'Error');
+     var b = new RangeError('abc');
+-    Object.setPrototypeOf(b, null);
++    b.__proto__ = null; // eslint-disable-line no-proto
+ 
+     st.deepEqualTest(
+       a,
+@@ -1005,9 +1003,10 @@ test('[[Prototypes]]', function (t) {
+ 
+     st.deepEqualTest(d1, d2, 'two dates with the same timestamp', true, true);
+ 
+-    var newProto = {};
+-    Object.setPrototypeOf(newProto, Date.prototype);
+-    Object.setPrototypeOf(d2, newProto);
++    var newProto = {
++      __proto__: Date.prototype
++    };
++    d2.__proto__ = newProto; // eslint-disable-line no-proto
+     st.ok(d2 instanceof Date, 'd2 is still a Date instance after tweaking [[Prototype]]');
+ 
+     st.deepEqualTest(d1, d2, 'two dates with the same timestamp and different [[Prototype]]', true, false);
+@@ -1083,12 +1082,12 @@ test('getters', { skip: !Object.defineProperty }, function (t) {
+ var isBrokenNode = isNode && process.env.ASSERT && semver.satisfies(process.version, '<= 13.3.0');
+ test('fake arrays: extra keys will be tested', { skip: !hasProto || isBrokenNode }, function (t) {
+   var a = tag({
++    __proto__: Array.prototype,
+     0: 1,
+     1: 1,
+     2: 'broken',
+     length: 2
+   }, 'Array');
+-  Object.setPrototypeOf(a, Array.prototype);
+   if (Object.defineProperty) {
+     Object.defineProperty(a, 'length', {
+       enumerable: false
+@@ -1098,7 +1097,7 @@ test('fake arrays: extra keys will be tested', { skip: !hasProto || isBrokenNode
+   t.deepEqualTest(a, [1, 1], 'fake and real array with same contents and [[Prototype]]', false, false);
+ 
+   var b = tag(/abc/, 'Array');
+-  Object.setPrototypeOf(b, Array.prototype);
++  b.__proto__ = Array.prototype; // eslint-disable-line no-proto
+   b.length = 3;
+   if (Object.defineProperty) {
+     Object.defineProperty(b, 'length', {
+@@ -1147,12 +1146,12 @@ test('circular references', function (t) {
+ // io.js v2 is the only version where `console.log(b)` below is catchable
+ var isNodeWhereBufferBreaks = isNode && semver.satisfies(process.version, '< 3');
+ var isNode06 = isNode && semver.satisfies(process.version, '<= 0.6'); // segfaults in node 0.6, it seems
+-
++/*
+ test('TypedArrays', { skip: !hasTypedArrays }, function (t) {
+   t.test('Buffer faked as Uint8Array', { skip: typeof Buffer !== 'function' || !Object.create || !hasProto || isNode06 }, function (st) {
+     var a = safeBuffer('test');
+     var b = tag(Object.create(
+-      Object.getPrototypeOf(a),
++      a.__proto__, // eslint-disable-line no-proto
+       assign(gOPDs(a), {
+         length: {
+           enumerable: false,
+@@ -1201,7 +1200,7 @@ test('TypedArrays', { skip: !hasTypedArrays }, function (t) {
+   t.test('one TypedArray faking as another', { skip: !hasProto }, function (st) {
+     var a = new Uint8Array(10);
+     var b = tag(new Int8Array(10), 'Uint8Array');
+-    Object.setPrototypeOf(b, Uint8Array.prototype);
++    b.__proto__ = Uint8Array.prototype; // eslint-disable-line no-proto
+ 
+     st.deepEqualTest(
+       a,
+@@ -1339,3 +1338,4 @@ test('TypedArrays', { skip: !hasTypedArrays }, function (t) {
+ 
+   t.end();
+ });
++*/
+\ No newline at end of file

@@ -1,0 +1,22 @@
+From: =?utf-8?q?Bastien_Roucari=C3=A8s?= <rouca@debian.org>
+Date: Sun, 12 Nov 2023 00:22:18 +0000
+Subject: Use for-each instead of foreach
+
+Forwarded: not-needed
+---
+ is-regex/test/index.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/is-regex/test/index.js b/is-regex/test/index.js
+index f6c0802..cc75927 100644
+--- a/is-regex/test/index.js
++++ b/is-regex/test/index.js
+@@ -1,7 +1,7 @@
+ 'use strict';
+ 
+ var hasToStringTag = require('has-tostringtag/shams')();
+-var forEach = require('foreach');
++var forEach = require('for-each');
+ var test = require('tape');
+ var isRegex = require('..');
+ 

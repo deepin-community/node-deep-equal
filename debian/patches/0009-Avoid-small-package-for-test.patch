@@ -1,0 +1,43 @@
+From: =?utf-8?q?Bastien_Roucari=C3=A8s?= <rouca@debian.org>
+Date: Sun, 12 Nov 2023 16:38:18 +0000
+Subject: Avoid small package for test
+
+Forwarded: not-needed
+---
+ set-function-name/test/index.js | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/set-function-name/test/index.js b/set-function-name/test/index.js
+index 10bba33..fcb948f 100644
+--- a/set-function-name/test/index.js
++++ b/set-function-name/test/index.js
+@@ -2,10 +2,10 @@
+ 
+ var test = require('tape');
+ var functionsHaveConfigurableNames = require('functions-have-names').functionsHaveConfigurableNames();
+-var generators = require('make-generator-function')();
+-var arrows = require('make-arrow-function').list();
+-var asyncs = require('make-async-function').list();
+-var asyncGens = require('make-async-generator-function')();
++//var generators = require('make-generator-function')();
++//var arrows = require('make-arrow-function').list();
++//var asyncs = require('make-async-function').list();
++//var asyncGens = require('make-async-generator-function')();
+ var forEach = require('for-each');
+ var inspect = require('object-inspect');
+ var v = require('es-value-fixtures');
+@@ -28,10 +28,10 @@ test('set function name', function (t) {
+ 			function () {},
+ 			function f() {},
+ 			{ inferred: function () {} }.inferred,
+-			arrows,
+-			asyncs,
+-			generators,
+-			asyncGens
++			//arrows,
++			//asyncs,
++			//generators,
++			//asyncGens
+ 		), function (fn) {
+ 			var origName = functionName(fn);
+ 			i += 1;

@@ -1,3 +1,14 @@
+node-deep-equal (2.2.3+~cs43.15.94-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream versions.
+  * Add component has-proto, hasown, set-function-length,
+    stop-iteration-iterator, set-function-name, is-array-buffer,
+    is-shared-array-buffer, array-buffer-byte-length
+  * Update copyright
+
+ -- Bastien Roucariès <rouca@debian.org>  Sat, 11 Nov 2023 22:35:21 +0000
+
 node-deep-equal (2.1.0+~cs31.12.80-1) unstable; urgency=medium
 
   * Team upload

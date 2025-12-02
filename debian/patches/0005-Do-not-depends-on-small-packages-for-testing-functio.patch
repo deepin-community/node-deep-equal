@@ -1,0 +1,74 @@
+From: =?utf-8?q?Bastien_Roucari=C3=A8s?= <rouca@debian.org>
+Date: Sat, 11 Nov 2023 23:54:34 +0000
+Subject: Do not depends on small packages for testing function-length
+
+forwarded: not-needed
+---
+ set-function-length/test/index.js | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/set-function-length/test/index.js b/set-function-length/test/index.js
+index 47bd740..270025f 100644
+--- a/set-function-length/test/index.js
++++ b/set-function-length/test/index.js
+@@ -1,9 +1,9 @@
+ 'use strict';
+ 
+ var test = require('tape');
+-var forEach = require('for-each');
++//var forEach = require('for-each');
+ var inspect = require('object-inspect');
+-var v = require('es-value-fixtures');
++//var v = require('es-value-fixtures');
+ var gOPD = require('gopd');
+ var functionsHaveConfigurableLengths = true;
+ var functionsHaveWritableLengths = true;
+@@ -20,6 +20,7 @@ if (gOPD) {
+ var setFunctionLength = require('../');
+ 
+ test('set function length', function (t) {
++	/*
+ 	forEach(v.nonFunctions, function (nonFunction) {
+ 		t['throws'](
+ 			function () { setFunctionLength(nonFunction); },
+@@ -27,7 +28,8 @@ test('set function length', function (t) {
+ 			inspect(nonFunction) + ' is not a function'
+ 		);
+ 	});
+-
++	*/
++	/*
+ 	forEach(v.nonNumbers.concat(v.nonIntegerNumbers, 0xFFFFFFFF + 1), function (nonInteger) {
+ 		t['throws'](
+ 			function () { setFunctionLength(nonInteger); },
+@@ -35,13 +37,13 @@ test('set function length', function (t) {
+ 			inspect(nonInteger) + ' is not an integer in the proper range'
+ 		);
+ 	});
+-
++	*/
+ 	t.test('setting the length', { skip: !functionsHaveConfigurableLengths && !functionsHaveWritableLengths }, function (st) {
+-		forEach([].concat(
++		[].concat(
+ 			function zero() {},
+ 			function one(_) {}, // eslint-disable-line no-unused-vars
+ 			function two(_, __) {} // eslint-disable-line no-unused-vars
+-		), function (fn) {
++		).forEach( function (fn) {
+ 			var origLength = fn.length;
+ 			var newLength = (origLength * 2) + 12;
+ 
+@@ -59,11 +61,11 @@ test('set function length', function (t) {
+ 	});
+ 
+ 	t.test('setting the length loosely', function (st) {
+-		forEach([].concat(
++		[].concat(
+ 			function zero() {},
+ 			function one(_) {}, // eslint-disable-line no-unused-vars
+ 			function two(_, __) {} // eslint-disable-line no-unused-vars
+-		), function (fn) {
++		).forEach( function (fn) {
+ 			var origLength = fn.length;
+ 
+ 			var msg = inspect(fn) + ': returns it (' + Function.prototype.toString.call(fn) + ')';

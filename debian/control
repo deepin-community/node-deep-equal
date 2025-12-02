@@ -5,7 +5,18 @@ Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.deb
 Uploaders: Ross Gammon <rossgammon@mail.dk>
 Build-Depends: debhelper-compat (= 13)
  , dh-sequence-nodejs
-Standards-Version: 4.6.1
+ , node-tape <!nocheck>
+ , node-object-inspect <!nocheck>
+ , node-function-bind <!nocheck>
+ , node-define-data-property <!nocheck>
+ , node-has-property-descriptors <!nocheck>
+ , node-internal-slot <!nocheck>
+ , node-core-js <!nocheck>
+ , node-es5-shim <!nocheck>
+ , node-es6-shim <!nocheck>
+ , node-for-each <!nocheck>
+ , node-is-date-object <!nocheck>
+Standards-Version: 4.6.2
 Vcs-Browser: https://salsa.debian.org/js-team/node-deep-equal
 Vcs-Git: https://salsa.debian.org/js-team/node-deep-equal.git
 Homepage: https://github.com/substack/node-deep-equal
@@ -17,10 +28,14 @@ Architecture: all
 Multi-Arch: foreign
 Depends: ${misc:Depends}
  , node-debbundle-es-to-primitive
- , node-define-properties
+ , node-define-property
+ , node-define-data-property
  , node-es-abstract
+ , node-has-property-descriptors
  , node-for-each
  , node-function-bind
+ , node-internal-slot
+ , node-is-date-object
  , node-isarray
  , node-object-inspect
  , node-resolve

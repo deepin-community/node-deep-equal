@@ -1,0 +1,104 @@
+From: =?utf-8?q?Bastien_Roucari=C3=A8s?= <rouca@debian.org>
+Date: Sun, 12 Nov 2023 16:44:31 +0000
+Subject: Remove need of small package for test
+
+Forwarded: not-needed
+---
+ regexpprototypeflags/test/implementation.js |  2 +-
+ regexpprototypeflags/test/shimmed.js        |  2 +-
+ regexpprototypeflags/test/tests.js          | 18 ++++++++++--------
+ 3 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/regexpprototypeflags/test/implementation.js b/regexpprototypeflags/test/implementation.js
+index 1e3a714..71e5475 100644
+--- a/regexpprototypeflags/test/implementation.js
++++ b/regexpprototypeflags/test/implementation.js
+@@ -3,7 +3,7 @@
+ var flags = require('../implementation');
+ var callBind = require('call-bind');
+ var test = require('tape');
+-var hasStrictMode = require('has-strict-mode')();
++var hasStrictMode = true; //require('has-strict-mode')();
+ var runTests = require('./tests');
+ 
+ test('as a function', function (t) {
+diff --git a/regexpprototypeflags/test/shimmed.js b/regexpprototypeflags/test/shimmed.js
+index 059e0e1..fa06207 100644
+--- a/regexpprototypeflags/test/shimmed.js
++++ b/regexpprototypeflags/test/shimmed.js
+@@ -9,7 +9,7 @@ var callBind = require('call-bind');
+ var isEnumerable = Object.prototype.propertyIsEnumerable;
+ var functionsHaveNames = require('functions-have-names')();
+ var functionsHaveConfigurableNames = require('functions-have-names').functionsHaveConfigurableNames();
+-var hasStrictMode = require('has-strict-mode')();
++var hasStrictMode = true;//require('has-strict-mode')();
+ 
+ var runTests = require('./tests');
+ 
+diff --git a/regexpprototypeflags/test/tests.js b/regexpprototypeflags/test/tests.js
+index adcfd02..7de1613 100644
+--- a/regexpprototypeflags/test/tests.js
++++ b/regexpprototypeflags/test/tests.js
+@@ -5,10 +5,10 @@ var inspect = require('object-inspect');
+ var supportsDescriptors = require('define-properties').supportsDescriptors;
+ 
+ var forEach = require('for-each');
+-var availableFlags = require('available-regexp-flags');
+-var regexProperties = require('available-regexp-flags/properties');
++//var availableFlags = require('available-regexp-flags');
++//var regexProperties = require('available-regexp-flags/properties');
+ 
+-var sortedFlags = availableFlags.slice().sort(function (a, b) { return a.localeCompare(b); }).join('');
++//var sortedFlags = availableFlags.slice().sort(function (a, b) { return a.localeCompare(b); }).join('');
+ 
+ var getRegexLiteral = function (stringRegex) {
+ 	try {
+@@ -24,7 +24,7 @@ module.exports = function runTests(flags, t) {
+ 	t.equal(flags(new RegExp('a', 'gmi')), 'gim', 'flags(new RegExp("a", "gmi")) !== "gim"');
+ 	t.equal(flags(/a/), '', 'flags(/a/) !== ""');
+ 	t.equal(flags(new RegExp('a')), '', 'flags(new RegExp("a")) !== ""');
+-
++	/*
+ 	forEach(availableFlags, function (flag) {
+ 		var property = regexProperties[flag];
+ 		t.test(property + ' flag', function (st) {
+@@ -33,7 +33,7 @@ module.exports = function runTests(flags, t) {
+ 			st.end();
+ 		});
+ 	});
+-
++	*/
+ 	t.test('sorting', function (st) {
+ 		st.equal(flags(/a/gim), 'gim', 'flags(/a/gim) !== "gim"');
+ 		st.equal(flags(/a/mig), 'gim', 'flags(/a/mig) !== "gim"');
+@@ -48,12 +48,12 @@ module.exports = function runTests(flags, t) {
+ 			st.equal(flags(getRegexLiteral('/a/sgmi')), 'gims', 'flags(/a/sgmi) !== "gims"');
+ 		}
+ 
+-		var randomFlags = availableFlags.slice().sort(function () { return Math.random() > 0.5 ? 1 : -1; }).join('').replace('v', '');
++		/*var randomFlags = availableFlags.slice().sort(function () { return Math.random() > 0.5 ? 1 : -1; }).join('').replace('v', '');
+ 		st.equal(
+ 			flags(getRegexLiteral('/a/' + randomFlags)),
+ 			sortedFlags.replace('v', ''),
+ 			'random: flags(/a/' + randomFlags + ') === ' + inspect(sortedFlags)
+-		);
++		);*/
+ 
+ 		st.end();
+ 	});
+@@ -75,12 +75,14 @@ module.exports = function runTests(flags, t) {
+ 		st.equal(flags({ __proto__: { multiline: true } }), 'm');
+ 
+ 		var obj = {};
++		/*
+ 		forEach(availableFlags, function (flag) {
+ 			if (flag !== 'v') {
+ 				obj[regexProperties[flag]] = true;
+ 			}
+ 		});
+-		st.equal(flags(obj), sortedFlags.replace('v', ''), 'an object with every available flag: ' + sortedFlags);
++		*/
++		//st.equal(flags(obj), sortedFlags.replace('v', ''), 'an object with every available flag: ' + sortedFlags);
+ 
+ 		st.end();
+ 	});
